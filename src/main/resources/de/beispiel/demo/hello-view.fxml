@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="609.0" prefWidth="783.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.beispiel.demo.HelloController">
+
+    <!-- Titel -->
+    <top>
+        <Label style="-fx-font-size: 24px;" text="Produktverwaltung">
+            <BorderPane.margin>
+                <Insets bottom="10" left="0" right="0" top="10" />
+            </BorderPane.margin>
+        </Label>
+    </top>
+
+    <!-- Tabelle -->
+    <center>
+        <TableView fx:id="produktTabelle" prefWidth="576.0">
+            <columns>
+                <TableColumn fx:id="idColumn" text="ID" />
+                <TableColumn fx:id="nameColumn" text="Name" />
+                <TableColumn fx:id="kategorieColumn" text="Kategorie" />
+                <TableColumn fx:id="lagerColumn" text="Lagerbestand" />
+                <TableColumn fx:id="einkaufColumn" text="Einkaufspreis" />
+                <TableColumn fx:id="verkaufColumn" text="Verkaufspreis" />
+                <TableColumn fx:id="verkauftColumn" text="Verkauft"/>
+
+            </columns>
+        </TableView>
+    </center>
+
+    <!-- rechts: formular -->
+    <right>
+        <VBox prefHeight="379.0" prefWidth="207.0" spacing="10">
+            <padding>
+                <Insets bottom="10" left="10" right="10" top="10" />
+            </padding>
+
+            <Label style="-fx-font-weight: bold;" text="Produkt bearbeiten / hinzufügen" />
+
+            <TextField fx:id="idField" promptText="Produkt-ID" />
+            <TextField fx:id="nameField" promptText="Name" />
+            <ComboBox fx:id="kategorieComboBox" prefHeight="26.0" prefWidth="185.0" promptText="Kategorie" />
+            <TextField fx:id="lagerField" promptText="Lagerbestand" />
+            <TextField fx:id="einkaufField" promptText="Einkaufspreis" />
+            <TextField fx:id="verkaufField" promptText="Verkaufspreis" />
+
+            <HBox spacing="10">
+                <Button fx:id="addButton" onAction="#handleAddProdukt" prefHeight="26.0" prefWidth="90.0" text="Hinzufügen" />
+                <Button fx:id="updateButton" onAction="#handleUpdateProdukt" text="Aktualisieren" />
+            </HBox>
+
+            <Button fx:id="deleteButton" maxWidth="Infinity" onAction="#handleDeleteProdukt" text="Produkt löschen" />
+            <TextField fx:id="verkaufenMengeField" text="1" promptText="Menge" />
+            <Button fx:id="verkaufenButton" mnemonicParsing="false" onAction="#handleVerkaufen" prefHeight="26.0" prefWidth="186.0" text="Verkaufen">
+            <VBox.margin>
+               <Insets bottom="100.0" />
+            </VBox.margin>
+         </Button>
+         <Label fx:id="gewinnLabel" prefHeight="18.0" prefWidth="182.0" text="Gewinn:" />
+            <Button fx:id="exportButton" mnemonicParsing="false" onAction="#handleExport" prefHeight="26.0" prefWidth="186.0" text="Export Tabelle">
+            <VBox.margin>
+               <Insets />
+            </VBox.margin></Button>
+            <Button fx:id="abmeldenButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleAbmelden" prefHeight="26.0" prefWidth="185.0" text="Abmelden" />
+        </VBox>
+    </right>
+
+    <!-- Suchfeld -->
+    <bottom>
+        <HBox prefHeight="55.0" prefWidth="783.0" spacing="10">
+            <padding>
+                <Insets bottom="10" left="10" right="10" top="10" />
+            </padding>
+            <TextField fx:id="searchField" prefHeight="26.0" prefWidth="464.0" promptText="Suchen..." HBox.hgrow="ALWAYS" />
+         <Label prefHeight="18.0" prefWidth="30.0" text="user:" />
+         <Label fx:id="userLabel" prefHeight="18.0" prefWidth="145.0" text="none" />
+
+        </HBox>
+    </bottom>
+
+</BorderPane>
